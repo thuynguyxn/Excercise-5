@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Remoting.Lifetime;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bai1
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            //ex_01();
+            ex_02();
+
+        }
+
+        //Write a C# function to find the maximum of three numbers.
+        static void ex_01()
+        { 
+            Console.Write("Nhap so thu nhat: ");
+            int so_1 = int.Parse(Console.ReadLine());
+            Console.Write("Nhap so thu hai: ");
+            int so_2 = int.Parse(Console.ReadLine());
+            Console.Write("Nhap so thu ba: ");
+            int so_3 = int.Parse(Console.ReadLine());
+
+            int max = so_1;
+            if (so_2 > max && so_2 > so_3)
+                max = so_2;
+            else if (so_3 > max && so_3 > so_2)
+                max = so_3;
+            Console.WriteLine($"so lon nhat cua 3 so {so_1},{so_2},{so_3} la {max}");
+        }
+
+        // -Improve the next version that accept at least 1 parameter.
+        static void ex_02()
+        {
+            Console.Write("Nhap so luong phan tu (it nhat 1): ");
+            int n = int.Parse(Console.ReadLine());
+
+            if (n < 1)
+            {
+                Console.WriteLine("Phai nhap it nhat 1 so!");
+                return;
+            }
+
+            int[] soNhap = new int[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("Nhap so thu " + (i + 1) + ": ");
+                soNhap[i] = int.Parse(Console.ReadLine());
+            }
+
+            int maxVal = soNhap[0];
+
+            for (int i = 1; i < n; i++)
+            {
+                if (soNhap[i] > maxVal)
+                    maxVal = soNhap[i];
+            }
+
+            string danhSach = string.Join(", ", soNhap);
+            Console.WriteLine("So lon nhat cua " + n + " so [" + danhSach + "] la " + maxVal);
+        }
+    }
+}
